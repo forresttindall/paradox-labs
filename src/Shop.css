@@ -1,0 +1,198 @@
+* {
+    color: #909090;
+  }
+  
+  /* Project Cards Section */
+  .projectssection {
+      background-color: rgb(10, 10, 10);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      padding: 50px 10%;
+      padding-bottom: 200px;
+  }
+  
+  
+  @media screen and (max-width: 800px) {
+      .projectssection {
+        padding: 150px 10%;
+        height: auto;
+    
+      }
+    }
+    
+    @media screen and (min-width: 1000px) {
+      .projectssection {
+        padding: 200px 10%;
+        margin: 0 auto;
+        
+        
+      }
+    }
+    
+    @media screen and (min-width: 1200px) {
+      .projectssection {
+        padding: 200px 10;
+        margin: 0 auto;
+        
+      }
+    }
+    
+    @media screen and (min-width: 1500px) {
+      .projectssection {
+        padding: 200px 22%;
+        margin: 0 auto;
+        
+      }
+    }
+    
+    @media screen and (min-width: 1900px) {
+      .projectssection {
+        padding: 300px 28%;
+        margin: 0 auto;
+       
+      }
+    }
+  
+    .projectssection h1 {
+      padding-bottom: 60px;
+    }
+  
+    .projectssection h2 {
+      padding-bottom: 40px;
+    }
+  
+  
+  
+  /* Cards Container and Layout */
+  .cards-container {
+      width: 100%;
+      
+      margin: 0 auto;
+      padding: 0 20px;
+  }
+  
+  .card-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 0 auto;
+     
+  }
+  
+  /* Responsive grid adjustments */
+  @media screen and (max-width: 850px) {
+      .card-list {
+          grid-template-columns: 1fr;
+          width: 100%;
+      }
+      
+      .card-item2 {
+          width: 100%;
+          margin: 0 auto;
+      }
+  }
+  
+  @media screen and (min-width: 851px) and (max-width: 1000px) {
+      .card-list {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+  
+  /* Card Item Styles */
+  .card-item2 {
+      display: flex;
+      flex-direction: column;
+      min-height: 400px;
+      padding: 26px;
+      margin-bottom: 0px;
+      padding-bottom: 26px;
+      line-height: 1.4;
+      list-style: none;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 18px;
+      text-align: left;
+      transition: ease 0.7s all;
+      background-color: rgb(20, 20, 20);
+      border: 2px solid rgb(30, 30, 30);
+  }
+  
+  .card-item2:hover {
+      
+      transform: translateY(-5px);
+      backdrop-filter: blur(10px);
+    box-shadow: 0 5px 40px rgba(171, 255, 31, 0.2);
+    border: 1px solid rgba(171, 255, 31, 0.5);
+  }
+  
+  .card-item2 img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 8px;
+      object-fit: cover;
+  }
+  
+  /* Card Description */
+  .carddescription {
+      height: 80px;
+      font-size: 14px;
+      color: #909090;
+      overflow: hidden;
+  }
+  
+  @media (max-width: 700px) {
+      .carddescription {
+          height: 80px;
+      }
+  }
+  
+  /* Arrow Icon */
+  .card-item2 .arrow {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-35deg);
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      margin: 0px 0px;
+      margin-bottom: 15px;
+      color: #909090;
+  }
+  
+  .card-item2:hover .arrow {
+      color: #655DFF;
+  }
+  
+  /* Utility Classes */
+  .paddingtb-5 {
+      padding: 5px 0;
+  }
+  
+  .paddingb-50 {
+      padding-bottom: 50px;
+  }
+  
+  .paddingb-5 {
+      padding-bottom: 5px;
+  }
+  
+  .gap-20 {
+      gap: 20px;
+  }
+  
+  .price-tag {
+      margin-top: auto;
+      padding: 0;
+      color: #7BBF01;
+      font-size: 0.9em;
+  }
+  
+  .card-item2:hover .price-tag {
+    color: #7BBF01;
+  }

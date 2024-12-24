@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- Essential Meta Tags -->
+<title>Paradox Labs | Shop Digital Products, Software, Hardware, and Crypto Innovation</title>
+
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Web3 marketplace for digital DIY electronics, project files, 3D printing models, software, and web3 applications. Download verified build guides, custom PCB designs, and innovative blockchain-powered solutions for makers and developers.">
+<meta name="keywords" content="web3 marketplace, DIY electronics, 3D printing files, PCB designs, build guides, blockchain apps, digital downloads, maker projects, electronic schematics, custom software, paradox labs, digital blueprints">
+
+<!-- Open Graph Meta Tags (for social sharing) -->
+<meta property="og:title" content="Paradox Labs | Web3 Marketplace for DIY Electronics & Digital Files">
+<meta property="og:description" content="Shop DIY electronics projects, 3D printing files, PCB designs, and web3 applications. Your decentralized marketplace for verified build guides and digital maker resources.">
+
+
+
+<!-- Additional Meta Tags -->
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="author" content="Paradox Labs">
+<meta name="geo.region" content="US-ID">
+<meta name="geo.placename" content="Boise">
+
+
+<!-- Title And Favicon -->
+
+<link rel="icon" type="image/x-icon" href="./public/favicon.ico">
+<!-- Social Share Image -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://paradoxlabs.tech">  
+<meta property="og:url" content="https://paradoxlabs.eth">
+<meta property="og:image" content="https://paradoxlabs.tech/src/images/socialshare.jpg"/>
+<meta property="og:image:secure_url" content="https://paradoxlabs.tech/src/images/socialshare.jpg"/>
+<meta property="og:image:type" content="jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+
+
+<!--CSS-->
+<link rel="stylesheet" href="style.css" />
+
+
+<!-- FONTS-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
+
+
+ <!-- Font Awesome Icons -->
+ <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.rel='stylesheet'" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ <!-- Unicons CSS -->
+<link rel="preload" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" as="style" onload="this.rel='stylesheet'" />
+
+
+   <!-- Font Awesome Icons -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+   <!-- Unicons CSS -->
+   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+
+
+<script src="nav.js" defer></script>
+<script src="reorder.js"></script>
+
+<!-- Add this script before your other scripts -->
+<script>
+  // Detect if accessing via Web3 and update meta tags accordingly
+  if (window.ethereum !== undefined || 
+      window.location.protocol === 'ipfs:' || 
+      window.location.hostname.endsWith('.eth')) {
+    // Update canonical URL for Web3
+    document.querySelector('meta[property="og:url"]').content = 'https://paradoxlabs.eth';
+    // Update image URLs for Web3 (using eth.limo gateway for ENS)
+    document.querySelector('meta[property="og:image"]').content = 'https://eth.limo/paradoxlabs.eth/src/images/socialshare.jpg';
+    document.querySelector('meta[property="og:image:secure_url"]').content = 'https://eth.limo/paradoxlabs.eth/src/images/socialshare.jpg';
+  }
+</script>
+
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

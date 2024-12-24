@@ -1,0 +1,226 @@
+* {
+  color: #909090;
+}
+
+/* Project Cards Section */
+.projectssection {
+    background-color: rgb(10, 10, 10);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 50px 10%;
+    padding-bottom: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add the grid pattern */
+.projectssection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(123, 191, 1, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(123, 191, 1, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Make sure content stays above grid */
+.projectssection > * {
+    position: relative;
+    z-index: 2;
+}
+
+@media screen and (max-width: 800px) {
+    .projectssection {
+      padding: 100px 10%;
+      height: auto;
+  
+    }
+  }
+  
+  @media screen and (min-width: 1000px) {
+    .projectssection {
+      padding: 120px 10%;
+      margin: 0 auto;
+      
+      
+    }
+  }
+  
+
+
+
+  .projectssection h1 {
+    padding-bottom: 60px;
+  }
+
+  .projectssection h2 {
+    padding-bottom: 40px;
+  }
+
+
+
+/* Cards Container and Layout */
+.cards-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 0 auto;
+   
+}
+
+/* Responsive grid adjustments */
+@media screen and (max-width: 850px) {
+    .card-list {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+    
+    .card-item2 {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 851px) and (max-width: 1000px) {
+    .card-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Card Item Styles */
+.card-item2 {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    padding: 26px;
+    margin-bottom: 0px;
+    padding-bottom: 26px;
+    line-height: 1.4;
+    list-style: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 18px;
+    text-align: left;
+    transition: ease 0.7s all;
+    background-color: rgb(20, 20, 20);
+    border: 2px solid rgb(30, 30, 30);
+}
+
+.card-item2:hover {
+    
+    transform: translateY(-5px);
+    backdrop-filter: blur(10px);
+  box-shadow: 0 5px 40px rgba(171, 255, 31, 0.2);
+  border: 1px solid rgba(171, 255, 31, 0.5);
+}
+
+.card-item2 img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Card Description */
+.carddescription {
+    height: 80px;
+    font-size: 14px;
+    color: #909090;
+    overflow: hidden;
+    margin: 0 0 15px 0;
+}
+
+@media (max-width: 700px) {
+    .carddescription {
+        height: 80px;
+    }
+}
+
+/* Arrow Icon */
+.card-item2 .arrow {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-35deg);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin: 0px 0px;
+    margin-bottom: 15px;
+    color: #909090;
+}
+
+.card-item2:hover .arrow {
+    color: #655DFF;
+}
+
+/* Utility Classes */
+.paddingtb-5 {
+    padding: 5px 0;
+}
+
+.paddingb-50 {
+    padding-bottom: 50px;
+}
+
+.paddingb-5 {
+    padding-bottom: 5px;
+}
+
+.gap-20 {
+    gap: 20px;
+}
+
+.price-tag {
+    margin-top: auto;
+    padding: 0;
+    color: #7BBF01;
+    font-size: 0.9em;
+}
+
+.card-item2:hover .price-tag {
+  color: #7BBF01;
+}
+
+.projectssection a .primarybutton {
+    margin-top: 60px;
+}
+
+.card-item2 h3 {
+    margin: 25px 0 15px 0;
+}
+
+.card-item2 br {
+    display: none;
+}
+
+/* Adjust grid layout for wide screens */
+@media screen and (min-width: 1000px) {
+    .card-list {
+        gap: 30px;
+    }
+    
+    .card-item2 {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
