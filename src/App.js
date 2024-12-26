@@ -16,6 +16,7 @@ import Test from './Products/Test';
 import StartHere from './StartHere';
 import CRTTerminal from './Products/CRTTerminal';
 import PoweredBy from './PoweredBy';
+import NewProject from './NewProject';
 import './PoweredBy.css';
 import './App.css';
 import './Header.css';
@@ -23,6 +24,10 @@ import './FeaturedProducts.css';
 import './Products/ProductsPage.css';
 import './HowItWorks.css';
 import './Contact.css';
+import emailjs from '@emailjs/browser';
+
+// Initialize EmailJS at the app level
+emailjs.init('Jw3vZKDhkrXkGhCLB');
 
 function App() {
   return (
@@ -40,6 +45,7 @@ function App() {
             </main>
           } />
           <Route path="/Shop" element={<Shop />} />
+          <Route path="/NewProject" element={<NewProject />} />
           <Route path="/GithubActivityCalendar" element={<GithubActivityCalendar />} />
           <Route path="/MagSafeMeshtasticRadio" element={<MagSafeMeshtasticRadio />} />
           <Route path="/Wardriver" element={<Wardriver />} />

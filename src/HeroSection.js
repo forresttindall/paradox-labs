@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function HeroSection() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -21,8 +22,8 @@ function HeroSection() {
         alt="Paradox Labs logo" 
         width="60" 
       />
-      <h2 className="headline">Future-Ready Digital Products</h2>
-      <p className="subheadline">Shop for verified DIY hacker projects, 3D printing files, software downloads, Web3 applications and more, we're your gateway to next-generation technology.</p>
+      <h2 className="headline">Future-Ready Digital Marketplace</h2>
+      <p className="subheadline">Shop for verified DIY hacker projects, 3D print files, software downloads, Web3 applications and more, we're your gateway to next-generation technology.</p>
     </div>
   );
 
@@ -37,7 +38,7 @@ function HeroSection() {
       <div className="floating-card card-2">
         <div className="card-content">
           <div className="status-indicator blue"></div>
-          <span>3D Printing Files</span>
+          <span>3D Print Files</span>
         </div>
       </div>
       <div className="floating-card card-3">
@@ -51,9 +52,9 @@ function HeroSection() {
 
   const CTAButton = () => (
     <div className="cta-group">
-      <a href="/shop" rel="noopener noreferrer">
+      <Link to="/shop">
         <button className="primarybutton">Explore Products</button>
-      </a>
+      </Link>
     </div>
   );
 
