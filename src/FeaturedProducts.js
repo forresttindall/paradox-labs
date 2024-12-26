@@ -1,22 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import githubsquare from './images/githubsquare2.png';
 import mesh from './images/mesh.jpg';
 import litupwardriver from './images/wardriver.jpg';
 import { useEthPrice } from './hooks/useEthPrice';
 
 function FeaturedProducts() {
-  const standardEthPrice = useEthPrice(10); // $10 USD
-  const meshtasticEthPrice = useEthPrice(15); // $15 USD
+  const standardEthPrice = useEthPrice(10);
+  const meshtasticEthPrice = useEthPrice(15);
 
   return (
     <section className="projectssection" aria-labelledby="services-title">
       <div id="services"></div>
-
       <h1 id="services-title" className="projectstitle">Featured Products</h1>
 
       <div className="cards-container">
         <div id="card-list2" className="card-list">
-          <a href="/GithubActivityCalendar" className="card-item2 card-item-1">
+          <Link to="/GithubActivityCalendar" className="card-item2 card-item-1">
             <img src={githubsquare} alt="A screenshot of a website showcasing web development services" />
             <br />
             <br />
@@ -26,9 +26,9 @@ function FeaturedProducts() {
             <div className="price-tag">
               Ξ {standardEthPrice} ETH
             </div>
-          </a>
+          </Link>
 
-          <a href="./MagSafeMeshtasticRadio" className="card-item-1 card-item2" aria-label="Branding services">
+          <Link to="/MagSafeMeshtasticRadio" className="card-item-1 card-item2" aria-label="Branding services">
             <img src={mesh} alt="A meshtastic node" />
             <br />
             <br />
@@ -38,9 +38,9 @@ function FeaturedProducts() {
             <div className="price-tag">
               Ξ {meshtasticEthPrice} ETH
             </div>
-          </a>
+          </Link>
 
-          <a href="./Wardriver" className="card-item2 card-item-1">
+          <Link to="/Wardriver" className="card-item2 card-item-1">
             <img src={litupwardriver} alt="an rbg enables wardriving device" />
             <br />
             <br />
@@ -50,13 +50,13 @@ function FeaturedProducts() {
             <div className="price-tag">
               Ξ {standardEthPrice} ETH
             </div>
-          </a>
+          </Link>
         </div>
       </div>
 
-      <a href="/shop">
+      <Link to="/shop">
         <button className="primarybutton">See All</button>
-      </a>
+      </Link>
 
     </section>
   );

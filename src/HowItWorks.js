@@ -5,7 +5,7 @@ function HowItWorks() {
   return (
     <section className="howitworks-section" id="howitworks">
       <div className="howitworks-container">
-        <h2 className="section-title">How It Works</h2>
+        <h2 className="section-title">Tech Specs</h2>
         
         <div className="technical-section">
           
@@ -32,7 +32,7 @@ function HowItWorks() {
               <div className="step-icon">
                 <i className="fas fa-cubes"></i>
               </div>
-              <h3>Base L2 Infrastructure</h3>
+              <h3>Base L2 Blockchain</h3>
               <p>
                 Built on Base, Coinbase's secure Layer 2 scaling solution for Ethereum. 
                 Benefit from high-speed transactions and minimal gas fees while maintaining 

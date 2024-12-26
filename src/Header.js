@@ -40,17 +40,22 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/HowItWorks" aria-label="Learn how it works">
-              <i className="fas fa-code-branch" /> How It Works
+            <Link to="/NewProject" aria-label="Add A Project">
+              <i className="fas fa-plus-circle" /> Add A Project
             </Link>
           </li>
           <li>
-            <Link to="/about" aria-label="Learn more about us">
+            <Link to="/HowItWorks" aria-label="View technical specifications">
+              <i className="fas fa-code-branch" /> Tech Specs
+            </Link>
+          </li>
+          <li>
+            <Link to="/About" aria-label="Learn more about us">
               <i className="fas fa-user-secret" /> About
             </Link>
           </li>
           <li>
-            <Link to="/contact" aria-label="Contact us">
+            <Link to="/Contact" aria-label="Contact us">
               <i className="fas fa-envelope" /> Contact
             </Link>
           </li>
