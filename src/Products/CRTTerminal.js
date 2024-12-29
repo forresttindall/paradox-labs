@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ProductHandler } from '../Products/ProductHandler.js';
+import ProductHandler from '../Products/ProductHandler.js';
 import crtterminal from '../images/crtterminal.png';
 import crtvideo from '../images/CRTVideo.mov';
+import { FaExclamationTriangle } from 'react-icons/fa';
 // Import additional CRT terminal images here
 // import crtImage2 from '../images/crt2.jpg';
 // import crtImage3 from '../images/crt3.jpg';
@@ -27,18 +28,35 @@ function Product() {
       }
     };
 
+    // Immediate update when component mounts
     updateEthPrice();
 
-    const interval = setInterval(updateEthPrice, 60000);
+    // Update every 5 seconds
+    const interval = setInterval(updateEthPrice, 5000);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const transactionComplete = urlParams.get('transaction');
+    const shouldDownload = urlParams.get('download');
+    
+    if (transactionComplete === 'complete' && shouldDownload === 'true') {
+        // Add a small delay to ensure the browser is ready to handle the download
+        setTimeout(() => {
+            initiateDownload(productDetails.downloadUrl, productDetails.fileName);
+            // Clean up the URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }, 1000);
+    }
   }, []);
 
   const productDetails = {
     id: 'crt-terminal',
     price: ethPrice,
-    fileName: 'CRTTerminal-file.zip',
-    downloadUrl: './src/Products/ProductFiles/CRTTerminal-file.zip'
+    fileName: 'CRTTerminal-files.zip',
+    downloadUrl: '/ProductFiles/CRTTerminal-files.zip'
   };
 
   const initiateDownload = (url, filename) => {
@@ -161,6 +179,11 @@ function Product() {
             This eye-catching animation simulates a vintage computer terminal with dynamic text 
             decryption effects, perfect for adding a cyberpunk aesthetic to your web projects. 
             Easy to implement and customize for your needs.
+            <br /><br />
+            <div className="wallet-notice">
+              <FaExclamationTriangle />
+              <span>Note: Only Coinbase Wallet is accepted at this time.</span>
+            </div>
           </p>
           <div className="price-container">
             <span className="price">

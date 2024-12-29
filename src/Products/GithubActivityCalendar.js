@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ProductHandler } from '../Products/ProductHandler.js';
+import ProductHandler from '../Products/ProductHandler.js';
 import githubsquare from '../images/githubsquare2.png';
 import githubcode from '../images/githubcode.png';
 // import githubImage3 from '../images/github3.png';
+import { FaExclamationTriangle } from 'react-icons/fa';
 
 
 
@@ -28,18 +29,35 @@ function Product() {
       }
     };
 
+    // Immediate update when component mounts
     updateEthPrice();
 
-    const interval = setInterval(updateEthPrice, 60000);
+    // Update every 5 seconds
+    const interval = setInterval(updateEthPrice, 5000);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const transactionComplete = urlParams.get('transaction');
+    const shouldDownload = urlParams.get('download');
+    
+    if (transactionComplete === 'complete' && shouldDownload === 'true') {
+        // Add a small delay to ensure the browser is ready to handle the download
+        setTimeout(() => {
+            initiateDownload(productDetails.downloadUrl, productDetails.fileName);
+            // Clean up the URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }, 1000);
+    }
   }, []);
 
   const productDetails = {
     id: 'test-product',
     price: ethPrice,
-    fileName: 'flipper-zero-case.zip',
-    downloadUrl: './src/Products/ProductFiles/GithubActivityCalendar-files.zip'
+    fileName: 'GithubActivityCalendar-files.zip',
+    downloadUrl: '/ProductFiles/GithubActivityCalendar-files.zip'
   };
 
   const initiateDownload = (url, filename) => {
@@ -142,8 +160,13 @@ function Product() {
           <h1>GitHub Activity Calendar</h1>
           <p className="product-description">
             Show off your GitHub activity to your friends and coworkers with this easy-to-use calendar 
-            for your website. Perfect for portfolios and personal websites, this dynamic calendar 
-            provides a beautiful visualization of your coding activity.
+            for your website. This interactive component displays your GitHub contributions in a visually 
+            appealing way, perfect for portfolios and personal websites.
+            <br /><br />
+            <div className="wallet-notice">
+              <FaExclamationTriangle />
+              <span>Note: Only Coinbase Wallet is accepted at this time.</span>
+            </div>
           </p>
           <div className="price-container">
             <span className="price">

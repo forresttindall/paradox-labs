@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ProductHandler } from '../Products/ProductHandler.js';
+import ProductHandler from '../Products/ProductHandler.js';
 import litupwardriver from '../images/wardriver.jpg';
 import wardrivercase from '../images/wardrivercase.jpg';
 import wardrivercode from '../images/wardrivercode.png';
+import { FaExclamationTriangle } from 'react-icons/fa';
 // Import additional wardriver images here
 // import wardriverImage2 from '../images/wardriver2.jpg';
 // import wardriverImage3 from '../images/wardriver3.jpg';
@@ -33,18 +34,35 @@ function Product() {
       }
     };
 
+    // Immediate update when component mounts
     updateEthPrice();
 
-    const interval = setInterval(updateEthPrice, 60000);
+    // Update every 5 seconds
+    const interval = setInterval(updateEthPrice, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const transactionComplete = urlParams.get('transaction');
+    const shouldDownload = urlParams.get('download');
+    
+    if (transactionComplete === 'complete' && shouldDownload === 'true') {
+        // Add a small delay to ensure the browser is ready to handle the download
+        setTimeout(() => {
+            initiateDownload(productDetails.downloadUrl, productDetails.fileName);
+            // Clean up the URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }, 1000);
+    }
+  }, []);
+
   const productDetails = {
-    id: 'test-product',
+    id: 'wardriver',
     price: ethPrice,
-    fileName: 'flipper-zero-case.zip',
-    downloadUrl: './src/Products/ProductFiles/Wardriver-files.zip'
+    fileName: 'Wardriver-files.zip',
+    downloadUrl: '/ProductFiles/Wardriver-files.zip'
   };
 
   const initiateDownload = (url, filename) => {
@@ -149,10 +167,14 @@ function Product() {
         <div className="product-info">
           <h1>Reactive RGB Wardriver</h1>
           <p className="product-description">
-            Digital downloads of the code and 3d print files for a reactive RGB wardriver that lights up when you collect new networks. 
-            This innovative device combines WiFi scanning capabilities with dynamic RGB feedback, 
-            creating an engaging and functional tool for network discovery. Perfect for security 
-            researchers and network enthusiasts.
+            Digital downloads for a reactive RGB wardriver that lights up when you collect new networks. 
+            This unique device combines functionality with visual feedback, creating an engaging 
+            wardriving experience. Includes all necessary files and documentation for assembly.
+            <br /><br />
+            <div className="wallet-notice">
+              <FaExclamationTriangle />
+              <span>Note: Only Coinbase Wallet is accepted at this time.</span>
+            </div>
           </p>
           <div className="price-container">
             <span className="price">

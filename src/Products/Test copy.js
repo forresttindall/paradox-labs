@@ -1,16 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import ProductHandler from './ProductHandler';
-import { useEthPrice } from '../hooks/useEthPrice';
+import { ProductHandler } from './ProductHandler';
 import litupwardriver from '../images/wardriver.jpg';
 import wardrivercase from '../images/wardrivercase.jpg';
 import wardrivercode from '../images/wardrivercode.png';
 
+
+
+
+
+
 function Product() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [ethPrice, setEthPrice] = useState('0.00015');
   
   const FIXED_USD_PRICE = 0.001;
-  const { ethPrice, isLoading } = useEthPrice(FIXED_USD_PRICE);
+
+  useEffect(() => {
+    const updateEthPrice = async () => {
+      try {
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
+        const data = await response.json();
+        const ethUsdPrice = data.ethereum.usd;
+        
+        const ethAmount = FIXED_USD_PRICE / ethUsdPrice;
+        setEthPrice(ethAmount.toFixed(8));
+      } catch (error) {
+        console.error('Error fetching ETH price:', error);
+      }
+    };
+
+    updateEthPrice();
+
+    const interval = setInterval(updateEthPrice, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const productDetails = {
     id: 'test-product',
@@ -19,36 +44,31 @@ function Product() {
     downloadUrl: './src/Products/ProductFiles/flipper-zero-case.zip'
   };
 
-  const handleSuccessfulPurchase = async () => {
-    try {
-      // Log the attempt
-      console.log('Debug - Starting download process');
-      
-      // Use the correct path relative to your public directory
-      const response = await fetch('/ProductFiles/flipper-zero-case.zip');
-      
-      // Log the response
-      console.log('Debug - Download response:', response);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'flipper-zero-case.zip';
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
-      
-      console.log('Debug - Download completed successfully');
-    } catch (error) {
-      console.error('Download error:', error);
-      alert('Download failed: ' + error.message);
-    }
+  const initiateDownload = (url, filename) => {
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.blob();
+        })
+        .then(blob => {
+          const blobUrl = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = blobUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(blobUrl);
+          resolve();
+        })
+        .catch(error => {
+          console.error('Download error:', error);
+          reject(error);
+        });
+    });
   };
 
   const handleBuyClick = async (e) => {
@@ -60,7 +80,7 @@ function Product() {
         
         if (success) {
             try {
-                await handleSuccessfulPurchase();
+                await initiateDownload(productDetails.downloadUrl, productDetails.fileName);
                 console.log('Download initiated successfully');
             } catch (downloadError) {
                 console.error('Download failed:', downloadError);
@@ -81,6 +101,13 @@ function Product() {
     }
   };
 
+
+
+
+
+  
+
+
   const images = [litupwardriver, wardrivercase, wardrivercode];
 
   const nextImage = () => {
@@ -88,21 +115,6 @@ function Product() {
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const transactionComplete = urlParams.get('transaction');
-    const shouldDownload = urlParams.get('download');
-    
-    if (transactionComplete === 'complete' && shouldDownload === 'true') {
-        // Add a small delay to ensure the browser is ready to handle the download
-        setTimeout(() => {
-            handleSuccessfulPurchase();
-            // Clean up the URL
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }, 1000);
-    }
-  }, []);
 
   return (
     <section className="product-section">
@@ -132,17 +144,11 @@ function Product() {
             Price is set to approximately 1 cent in ETH for testing purposes.
           </p>
           <div className="price-container">
-            {isLoading ? (
-              <span className="price">Loading price...</span>
-            ) : ethPrice ? (
-              <span className="price">Ξ {ethPrice}</span>
-            ) : (
-              <span className="price">Price unavailable</span>
-            )}
+            <span className="price">Ξ {productDetails.price}</span>
             <button 
               className="primarybutton buy-button"
               onClick={handleBuyClick}
-              disabled={isProcessing || isLoading || !ethPrice}
+              disabled={isProcessing}
             >
               {isProcessing ? 'Processing...' : 'Buy Now'}
             </button>

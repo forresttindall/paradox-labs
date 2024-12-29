@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ProductHandler } from './ProductHandler';
+import ProductHandler from './ProductHandler';
 import dotbackground from '../images/dotbackground.png';
 import dotcode from '../images/wardrivercode.png';
+import { FaExclamationTriangle } from 'react-icons/fa';
 
 
 
@@ -29,18 +30,35 @@ function Product() {
       }
     };
 
+    // Immediate update when component mounts
     updateEthPrice();
 
-    const interval = setInterval(updateEthPrice, 60000);
+    // Update every 5 seconds
+    const interval = setInterval(updateEthPrice, 5000);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const transactionComplete = urlParams.get('transaction');
+    const shouldDownload = urlParams.get('download');
+    
+    if (transactionComplete === 'complete' && shouldDownload === 'true') {
+        // Add a small delay to ensure the browser is ready to handle the download
+        setTimeout(() => {
+            initiateDownload(productDetails.downloadUrl, productDetails.fileName);
+            // Clean up the URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }, 1000);
+    }
   }, []);
 
   const productDetails = {
     id: 'test-product',
     price: ethPrice,
-    fileName: 'flipper-zero-case.zip',
-    downloadUrl: './src/Products/ProductFiles/DotAnimation-files.zip'
+    fileName: 'DotAnimation-files.zip',
+    downloadUrl: '/ProductFiles/DotAnimation-files.zip'
   };
 
   const initiateDownload = (url, filename) => {
@@ -145,6 +163,11 @@ function Product() {
             Perfect for creating engaging backgrounds, this animation features a responsive grid 
             pattern that reacts to user interaction. The package includes both the source code 
             and documentation for easy implementation into any web project.
+            <br /><br />
+            <div className="wallet-notice">
+              <FaExclamationTriangle />
+              <span>Note: Only Coinbase Wallet is accepted at this time.</span>
+            </div>
           </p>
           <div className="price-container">
             <span className="price">

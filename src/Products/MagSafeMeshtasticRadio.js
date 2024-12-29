@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { ProductHandler } from '../Products/ProductHandler.js';
+import ProductHandler from '../Products/ProductHandler.js';
 import mesh from '../images/mesh.jpg';
 import meshblue from '../images/meshblue.jpg';
 import mesh3 from '../images/mesh3.jpg';
 import mesh4 from '../images/mesh4.jpg';
 import mesh5 from '../images/mesh5.jpg';
 import mesh6 from '../images/mesh6.JPG';
+import { FaExclamationTriangle } from 'react-icons/fa';
 // Import additional images here if you have them
 // import meshImage2 from '../images/mesh2.jpg';
 // import meshImage3 from '../images/mesh3.jpg';
@@ -36,18 +37,35 @@ function Product() {
       }
     };
 
+    // Immediate update when component mounts
     updateEthPrice();
 
-    const interval = setInterval(updateEthPrice, 60000);
+    // Update every 5 seconds
+    const interval = setInterval(updateEthPrice, 5000);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const transactionComplete = urlParams.get('transaction');
+    const shouldDownload = urlParams.get('download');
+    
+    if (transactionComplete === 'complete' && shouldDownload === 'true') {
+        // Add a small delay to ensure the browser is ready to handle the download
+        setTimeout(() => {
+            initiateDownload(productDetails.downloadUrl, productDetails.fileName);
+            // Clean up the URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }, 1000);
+    }
   }, []);
 
   const productDetails = {
     id: 'test-product',
     price: ethPrice,
-    fileName: 'flipper-zero-case.zip',
-    downloadUrl: './src/Products/ProductFiles/MagSafeMeshtasticRadio-files.zip'
+    fileName: 'MagSafeMeshtasticRadio-files.zip',
+    downloadUrl: '/ProductFiles/MagSafeMeshtasticRadio-files.zip'
   };
 
   const initiateDownload = (url, filename) => {
@@ -155,10 +173,15 @@ function Product() {
         <div className="product-info">
           <h1>MagSafe Meshtastic Radio Node</h1>
           <p className="product-description">
-            Digital files and full instructions for a MagSafe compatible Meshtastic node.
+            Digital files for a MagSafe compatible radio node for the Meshtastic project. 
             This innovative design combines the convenience of magnetic mounting with the 
-            powerful mesh networking capabilities of Meshtastic, creating a versatile and 
-            user-friendly communication solution. Simple to use and easy to set up. <span style={{fontWeight: 'bold'}}>Requires a 3d printer.</span>
+            powerful mesh networking capabilities of Meshtastic. Perfect for creating your 
+            own off-grid communication network.
+            <br /><br />
+            <div className="wallet-notice">
+              <FaExclamationTriangle />
+              <span>Note: Only Coinbase Wallet is accepted at this time.</span>
+            </div>
           </p>
           <div className="price-container">
             <span className="price">
