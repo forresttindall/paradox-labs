@@ -82,6 +82,9 @@
 
 .form-group {
   margin-bottom: 20px;
+  background: rgba(30, 30, 30, 0.5);
+  padding: 15px;
+  border-radius: 8px;
 }
 
 .form-group label {
@@ -226,7 +229,12 @@
 
 @media (max-width: 768px) {
   .newproject-section {
-    padding: 60px 20px;
+    padding: 80px 20px;
+  }
+
+  .section-title {
+    margin-top: 20px;
+    font-size: 2rem;
   }
 
   .submission-guide {
@@ -235,10 +243,19 @@
 
   .submission-step {
     flex-direction: column;
+    width: 100%;
   }
 
   .step-number {
     margin-bottom: 15px;
+  }
+
+  .step-content {
+    width: 100%;
+  }
+
+  .form-group {
+    width: 100%;
   }
 }
 
@@ -269,9 +286,6 @@
 }
 
 .payment-details .form-group {
-  background: rgba(30, 30, 30, 0.5);
-  padding: 15px;
-  border-radius: 8px;
   margin-bottom: 15px;
 }
 

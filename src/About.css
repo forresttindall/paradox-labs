@@ -280,8 +280,10 @@
     font-size: 2rem;
   }
   
-  .values-grid {
-    grid-template-columns: 1fr;
+  .value-item {
+    max-width: calc(50% - 12.5px);
+    min-width: calc(50% - 12.5px);
+    padding: 15px;
   }
   
   .mission {
@@ -303,5 +305,12 @@
   
   .tech-items a {
     padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .value-item {
+    max-width: 100%;
+    min-width: 100%;
   }
 }

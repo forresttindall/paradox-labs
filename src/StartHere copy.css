@@ -170,28 +170,6 @@
   border: 1px solid rgba(123, 191, 1, 0.1);
 }
 
-.wallet-coming-soon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #666;
-  background: rgba(30, 30, 30, 0.5);
-  padding: 20px;
-  border-radius: 8px;
-  height: 100%;
-  width: 100%;
-}
-
-.wallet-logo.disabled {
-  opacity: 0.5;
-}
-
-.coming-soon {
-  color: #666 !important;
-  font-size: 0.8rem;
-  margin-top: 5px;
-}
-
 @media (max-width: 768px) {
   .starthere-section {
     padding: 60px 20px;
@@ -222,12 +200,5 @@
 
   .beginner-guide {
     padding: 25px;
-  }
-
-  .wallet-coming-soon {
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 15px;
-    padding: 15px;
   }
 }

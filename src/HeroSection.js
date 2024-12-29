@@ -15,15 +15,10 @@ function HeroSection() {
 
   const Content = () => (
     <div className="painpoints-content">
-      <p className="overline">ON-CHAIN INNOVATION</p>
-      <img 
-        className="paddingb-20" 
-        src={require("./images/paradox-logo.png")} 
-        alt="Paradox Labs logo" 
-        width="60" 
-      />
+      <h1 className="logo-text">Paradox Labs</h1>
       <h2 className="headline">Future-Ready Digital Marketplace</h2>
       <p className="subheadline">Shop for verified DIY hacker projects, 3D print files, software downloads, Web3 applications and more, we're your gateway to next-generation technology.</p>
+      <p className="overline">ON-CHAIN INNOVATION</p>
     </div>
   );
 
@@ -60,13 +55,12 @@ function HeroSection() {
 
   return (
     <section className="airlinksection" id="technologies" aria-labelledby="airlinksection-title">
-      <div className="painpoints-container">
+      <div className={`painpoints-container ${isMobile ? 'mobile-view' : ''}`}>
         {isMobile ? (
-          <>
+          <div className="mobile-content">
             <Content />
-            <FloatingCards />
             <CTAButton />
-          </>
+          </div>
         ) : (
           <>
             <div className="painpoints-content">

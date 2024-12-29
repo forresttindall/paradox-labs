@@ -22,25 +22,25 @@ function StartHere() {
                         className="wallet-logo"
                       />
                       <span>Coinbase Wallet</span>
-                      <small>Recommended wallet</small>
+                      <small>Easiest for beginners</small>
                     </a>
                   </div>
                   <div className="wallet-option">
-                    <div className="wallet-coming-soon">
+                    <a href="https://metamask.io/download/" target="_blank" rel="noopener noreferrer">
                       <img 
                         src="/images/metamask-fox.svg" 
                         alt="MetaMask"
-                        className="wallet-logo disabled"
+                        className="wallet-logo"
                       />
                       <span>MetaMask</span>
-                      <small className="coming-soon">Coming Soon</small>
-                    </div>
+                      <small>Most popular choice</small>
+                    </a>
                   </div>
                 </div>
                 <div className="quick-setup">
                   <p>Quick Setup:</p>
                   <ol>
-                    <li>Install Coinbase Wallet</li>
+                    <li>Install wallet (choose your preferred platform)</li>
                     <li>Create new wallet - <span className="important-note">Save your recovery phrase securely!</span></li>
                     <li>Add funds using credit card or bank transfer</li>
                   </ol>

@@ -8,8 +8,8 @@ import crtterminal from './images/crtterminal.png';
 import { useEthPrice } from './hooks/useEthPrice';
 
 function Shop() {
-  const standardEthPrice = useEthPrice(10);  // $10 USD products
-  const meshtasticEthPrice = useEthPrice(15);  // $15 USD products
+  const { ethPrice: standardEthPrice, isLoading: standardLoading } = useEthPrice(10);
+  const { ethPrice: meshtasticEthPrice, isLoading: meshtasticLoading } = useEthPrice(15);
 
   return (
     <section className="projectssection" aria-labelledby="services-title">
@@ -26,7 +26,7 @@ function Shop() {
             <br />
             <p className="carddescription">Show off your github activity to your friends and coworkers with this easy to use calendar for your website.</p>
             <div className="price-tag">
-              {standardEthPrice ? `Ξ ${standardEthPrice}` : 'Loading price...'}
+              {standardLoading ? 'Loading price...' : `Ξ ${standardEthPrice}`}
             </div>
           </Link>
 
@@ -38,7 +38,7 @@ function Shop() {
             <br />
             <p className="carddescription">Digital files for a magSafe compatible radio node for the Meshtastic project.</p>
             <div className="price-tag">
-              {meshtasticEthPrice ? `Ξ ${meshtasticEthPrice}` : 'Loading price...'}
+              {meshtasticLoading ? 'Loading price...' : `Ξ ${meshtasticEthPrice}`}
             </div>
           </Link>
 
@@ -50,7 +50,7 @@ function Shop() {
             <br />
             <p className="carddescription">Digital downloads of a reactive RGB wardriver thats lights up when you collect new networks.</p>
             <div className="price-tag">
-              {standardEthPrice ? `Ξ ${standardEthPrice}` : 'Loading price...'}
+              {standardLoading ? 'Loading price...' : `Ξ ${standardEthPrice}`}
             </div>
           </Link>
 
@@ -62,7 +62,7 @@ function Shop() {
             <br />
             <p className="carddescription">Digital downloads of a dot background for your website.</p>
             <div className="price-tag">
-              {standardEthPrice ? `Ξ ${standardEthPrice}` : 'Loading price...'}
+              {standardLoading ? 'Loading price...' : `Ξ ${standardEthPrice}`}
             </div>
           </Link>
 
@@ -74,7 +74,7 @@ function Shop() {
             <br />
             <p className="carddescription">Digital downloads of a CRT terminal decryption animation for your website.</p>
             <div className="price-tag">
-              {standardEthPrice ? `Ξ ${standardEthPrice}` : 'Loading price...'}
+              {standardLoading ? 'Loading price...' : `Ξ ${standardEthPrice}`}
             </div>
           </Link>
         </div>

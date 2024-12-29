@@ -85,7 +85,7 @@ a {
     display: block;
   }
   .nav {
-    padding: 5px 20px;
+    padding: 15px 20px;
   }
   .nav .nav-links {
     position: fixed;
@@ -111,6 +111,12 @@ a {
     cursor: pointer;
     padding-left: 20px;
   }
+  .nav .navOpenBtn:hover {
+    color: #7BBF01;
+    opacity: 1;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+  }
   .nav .navCloseBtn {
     position: absolute;
     top: 20px;
@@ -118,6 +124,23 @@ a {
     color: #909090;
     font-size: 20px;
     cursor: pointer;
+  }
+  .nav .navCloseBtn:hover {
+    color: #7BBF01;
+    opacity: 1;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
+  }
+  .social-menu-btn svg {
+    color: #909090;
+    font-size: 25px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .social-menu-btn:hover svg {
+    color: #7BBF01;
+    opacity: 1;
+    transform: scale(1.1);
   }
 }
 
@@ -147,16 +170,36 @@ a {
 
 .social-icon {
   color: #909090;
-  font-size: 1.2rem; /* Match the nav-links icon size */
-  margin: 5px;
+  font-size: 20px;
+  margin: 0 8px;
   opacity: 0.8;
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  height: 20px;
+  width: 20px;
+}
+
+.social-icon i {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .social-icon:hover {
   color: #7BBF01;
   opacity: 1;
   transform: scale(1.1);
+}
+
+/* Specific size adjustments for Warpcast icon if needed */
+.social-icon .si-warpcast {
+  font-size: 1.1rem;
 }
 
 .logo {
@@ -174,5 +217,174 @@ a {
   top: 50%;
   bottom: 50%;
   padding: 0 5px;
+}
+
+/* Container for social icons */
+nav .social-icons-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 20px;
+}
+
+/* Desktop social icons */
+.desktop-social {
+  display: flex;
+}
+
+/* Social menu button */
+.social-menu-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main style for the icon */
+.social-menu-btn svg {
+  color: #909090;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover state for the icon */
+.social-menu-btn:hover svg {
+  color: #7BBF01 !important;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+  .desktop-social {
+    display: none !important; /* Force hide on mobile */
+  }
+
+  .social-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Social slide-out menu */
+.social-slide-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100vh;
+  width: 250px;
+  background: rgb(15, 15, 15);
+  padding: 60px 20px 20px;
+  transition: right 0.3s ease;
+  z-index: 1001;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.social-slide-menu.open {
+  right: 0;
+}
+
+.social-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #909090;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.social-close-btn:hover {
+  color: #7BBF01;
+}
+
+.social-slide-menu h3 {
+  color: #909090;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.mobile-social-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-social-icon {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #909090;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 10px;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.mobile-social-icon svg {
+  color: #909090 !important;
+  transition: all 0.2s ease;
+}
+
+.mobile-social-icon:hover {
+  background: transparent !important;
+}
+
+.mobile-social-icon:hover svg,
+.mobile-social-icon:hover span {
+  color: #7BBF01 !important;
+}
+
+.mobile-social-icon span {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .social-slide-menu {
+    /* Remove the width: 100% that was here */
+  }
+}
+
+/* Single rule for the social menu button */
+#social-menu-icon svg {
+  color: #909090;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#social-menu-icon:hover svg {
+  color: #7BBF01 !important;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Social menu items */
+.mobile-social-icon {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #909090;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 10px;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+}
+
+.mobile-social-icon:hover {
+  background: transparent !important;
+}
+
+.mobile-social-icon:hover svg,
+.mobile-social-icon:hover span {
+  color: #7BBF01 !important;
 }
 

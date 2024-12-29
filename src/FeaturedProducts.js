@@ -6,8 +6,8 @@ import litupwardriver from './images/wardriver.jpg';
 import { useEthPrice } from './hooks/useEthPrice';
 
 function FeaturedProducts() {
-  const standardEthPrice = useEthPrice(10);
-  const meshtasticEthPrice = useEthPrice(15);
+  const { ethPrice: standardEthPrice, isLoading: standardLoading } = useEthPrice(10);
+  const { ethPrice: meshtasticEthPrice, isLoading: meshtasticLoading } = useEthPrice(15);
 
   return (
     <section className="projectssection" aria-labelledby="services-title">
@@ -24,11 +24,11 @@ function FeaturedProducts() {
             <br />
             <p className="carddescription">Show off your github activity to your friends and coworkers with this easy to use calendar for your website.</p>
             <div className="price-tag">
-              Ξ {standardEthPrice} ETH
+              {standardLoading ? 'Loading price...' : `Ξ ${standardEthPrice}`}
             </div>
           </Link>
 
-          <Link to="/MagSafeMeshtasticRadio" className="card-item-1 card-item2" aria-label="Branding services">
+          <Link to="/MagSafeMeshtasticRadio" className="card-item-1 card-item2">
             <img src={mesh} alt="A meshtastic node" />
             <br />
             <br />
@@ -36,7 +36,7 @@ function FeaturedProducts() {
             <br />
             <p className="carddescription">Digital files for a magSafe compatible radio node for the Meshtastic project.</p>
             <div className="price-tag">
-              Ξ {meshtasticEthPrice} ETH
+              {meshtasticLoading ? 'Loading price...' : `Ξ ${meshtasticEthPrice}`}
             </div>
           </Link>
 
@@ -48,7 +48,7 @@ function FeaturedProducts() {
             <br />
             <p className="carddescription">Digital downloads of a reactive RGB wardriver thats lights up when you collect new networks.</p>
             <div className="price-tag">
-              Ξ {standardEthPrice} ETH
+              {standardLoading ? 'Loading price...' : `Ξ ${standardEthPrice}`}
             </div>
           </Link>
         </div>
@@ -57,7 +57,6 @@ function FeaturedProducts() {
       <Link to="/shop">
         <button className="primarybutton">See All</button>
       </Link>
-
     </section>
   );
 }

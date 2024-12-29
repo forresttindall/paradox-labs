@@ -241,7 +241,7 @@ background-position: center;
 }
 
 .airlinksection .headline {
-  font-size: 3.5rem;
+  font-size: 2.9rem;
   line-height: 1.1;
   font-weight: 600;
   color: white;
@@ -358,7 +358,9 @@ background-position: center;
   .airlinksection .painpoints-visual {
     height: auto;
     min-height: 300px;
-    transform: translateX(20px);
+    transform: none;
+    position: relative;
+    width: 100%;
   }
 
   .airlinksection .headline {
@@ -371,6 +373,36 @@ background-position: center;
     justify-content: center;
     width: 100%;
     margin-top: 40px;
+  }
+
+  .airlinksection .card-1 {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .airlinksection .card-2 {
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .airlinksection .card-3 {
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateX(-50%) translateY(0px);
+    }
+    50% {
+      transform: translateX(-50%) translateY(-20px);
+    }
+    100% {
+      transform: translateX(-50%) translateY(0px);
+    }
   }
 }
 
@@ -388,5 +420,58 @@ background-position: center;
 .softwaretext {
   margin: 40px;
   max-width: 550px;
+}
+
+.logo-text {
+  color: #ABFF1F;
+  font-family: 'PP Neue Machina Inktrap', monospace;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .airlinksection {
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-view {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+  }
+
+  .mobile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .mobile-content .painpoints-content {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .mobile-content .headline {
+    font-size: 2.5rem;
+    margin-top: 20px;
+  }
+
+  .mobile-content .subheadline {
+    margin: 20px auto;
+    max-width: 90%;
+  }
+
+  .mobile-content .cta-group {
+    margin-top: 30px;
+  }
 }
 
