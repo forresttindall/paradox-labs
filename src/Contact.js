@@ -5,7 +5,7 @@ import './Contact.css';
 
 const Contact = () => {
   useEffect(() => {
-    emailjs.init('U0DcOPmfXZ3Btjgdp');
+    emailjs.init('XXXXXXXXXXXX'); // add key here
   }, []);
 
   const blastConfetti = () => {
@@ -59,14 +59,14 @@ const Contact = () => {
 
     emailjs
       .send(
-        'service_w5tuy56',
-        'template_n0od64c',
+        'XXXXXXXXXXX',   // add service ID
+        'XXXXXXXXXXX',  // add template ID
         {
           user_name: e.target.user_name.value,
           user_email: e.target.user_email.value,
           message: e.target.message.value,
         },
-        'U0DcOPmfXZ3Btjgdp'
+        'XXXXXXXXXXXXXX' //  add key here
       )
       .then(
         (result) => {
