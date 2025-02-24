@@ -108,5 +108,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 Forrest Tindall - [forrest.tindall@gmail.com](mailto:forrest.tindall@gmail.com)
 
-[https://github.com/forresttindall/paradox-labs]([paradox-labs](https://github.com/forresttindall/paradox-labs-web3-marketplace))
+Project Link: [paradox-labs](https://github.com/forresttindall/paradox-labs-web3-marketplace)
+
 
