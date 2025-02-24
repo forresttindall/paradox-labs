@@ -26,33 +26,6 @@ Paradox Labs is a future-ready digital marketplace that leverages blockchain tec
 - **Payment Processing**: Native ETH transactions
 - **Smart Contracts**: EVM-compatible contracts for secure transactions Web3.js & Ethers.js
 
-## Key Components
-
-### ProductHandler.js
-
-Core functionality for blockchain interactions:
-
-- Wallet connection handling (desktop and mobile)
-- Network switching to Base L2
-- Transaction processing
-- Error handling for various wallet states
-
-### Product Components
-
-Individual product pages with:
-
-- Dynamic ETH pricing based on USD fixed price
-- Real-time price conversion via CoinGecko API
-- Secure file download initiation after transaction
-- Image gallery with navigation
-
-### HeroSection.js
-
-Landing page with:
-
-- Responsive design for mobile/desktop
-- Animated floating cards
-- Call-to-action navigation
 
 ## Installation and Setup
 
