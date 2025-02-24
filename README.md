@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+# Paradox Labs: Web3 Digital Marketplace
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+A blockchain-powered marketplace for DIY hacker projects, 3D print files, software downloads, and more, built on Base L2 with Coinbase Wallet integration.
 
-In the project directory, you can run:
+[Paradox Labs Marketplace](https://paradoxlabs.tech)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Paradox Labs is a future-ready digital marketplace that leverages blockchain technology to create a decentralized platform for selling and distributing digital goods. The platform specializes in DIY hacker projects, 3D print files, and software downloads, all secured and distributed through blockchain technology.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Web3 Authentication**: Connect securely using Ethereum-based wallets
+- **Base L2 Integration**: Built on Coinbase's Base Layer 2 solution for fast, low-cost transactions
+- **Smart Contract Security**: Atomic purchases with instant delivery triggers
+- **Decentralized Storage**: Files distributed via IPFS for high availability
+- **Zero-Knowledge Architecture**: No personal data collected or stored
+- **Cross-Platform Support**: Desktop support via Coinbase Wallet extension with mobile deep linking
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `npm run build`
+- **Frontend**: React.js
+- **Blockchain**: Base L2 (Ethereum Layer 2)
+- **Authentication**: Web3 wallet connection (EIP-1193 compliant)
+- **Payment Processing**: Native ETH transactions
+- **Smart Contracts**: EVM-compatible contracts for secure transactions
+- **File Storage**: IPFS for decentralized content delivery
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Key Components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### ProductHandler.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Core functionality for blockchain interactions:
 
-### `npm run eject`
+- Wallet connection handling (desktop and mobile)
+- Network switching to Base L2
+- Transaction processing
+- Error handling for various wallet states
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Product Components
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Individual product pages with:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Dynamic ETH pricing based on USD fixed price
+- Real-time price conversion via CoinGecko API
+- Secure file download initiation after transaction
+- Image gallery with navigation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### HeroSection.js
 
-## Learn More
+Landing page with:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Responsive design for mobile/desktop
+- Animated floating cards
+- Call-to-action navigation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation and Setup
 
-### Code Splitting
+1. Clone the repository:
+   ```
+   git clone https://github.com/forresttindall/paradox-labs.git
+   cd paradox-labs
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-### Analyzing the Bundle Size
+3. Run the development server:
+   ```
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Usage
 
-### Making a Progressive Web App
+### For Buyers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Navigate to the product you want to purchase
+2. Click "Buy Now"
+3. Connect your Coinbase Wallet when prompted
+4. Confirm the transaction in your wallet
+5. The file will automatically download upon successful transaction
 
-### Advanced Configuration
+### For Developers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To add a new product:
 
-### Deployment
+1. Create a new product component in `src/Products/`
+2. Add the product's digital assets to `public/ProductFiles/`
+3. Update the Shop component to include the new product
+4. Ensure proper pricing configuration in the product component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Smart Contract Integration
 
-### `npm run build` fails to minify
+The marketplace uses direct wallet-to-wallet transactions secured by the Base L2 blockchain:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```javascript
+const tx = await signer.sendTransaction({
+    to: this.MERCHANT_WALLET,
+    value: priceInWei,
+    gasLimit: 21000
+});
+```
+
+## Mobile Support
+
+The platform includes specialized mobile detection and deep linking:
+
+```javascript
+if (isMobile && !window.ethereum) {
+    const paymentUrl = `https://go.cb-w.com/pay?address=${this.MERCHANT_WALLET}&amount=${productPrice}&asset=ETH`;
+    window.location.href = paymentUrl;
+    return false;
+}
+```
+
+## Future Roadmap
+
+- [ ] Add support for additional wallets (MetaMask, WalletConnect)
+- [ ] Implement ERC-721 receipts as proof of purchase
+- [ ] Create subscription-based product offerings
+- [ ] Expand to additional L2 networks (Arbitrum, Optimism)
+- [ ] Add multi-currency support (USDC, DAI)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Contact
+
+Forrest Tindall - [forrest.tindall@gmail.com](mailto:forrest.tindall@gmail.com)
+
+Project Link: [https://github.com/forresttindall/paradox-labs](https://github.com/forresttindall/paradox-labs)
