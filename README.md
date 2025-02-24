@@ -24,8 +24,7 @@ Paradox Labs is a future-ready digital marketplace that leverages blockchain tec
 - **Blockchain**: Base L2 (Ethereum Layer 2)
 - **Authentication**: Web3 wallet connection (EIP-1193 compliant)
 - **Payment Processing**: Native ETH transactions
-- **Smart Contracts**: EVM-compatible contracts for secure transactions
-- **File Storage**: IPFS for decentralized content delivery
+- **Smart Contracts**: EVM-compatible contracts for secure transactions Web3.js & Ethers.js
 
 ## Key Components
 
